@@ -11,6 +11,9 @@ const GoodsList = () => {
 	useEffect(() => {
 		cart.setCart(JSON.parse(localStorage.getItem("cart")) || []);
 		good.setGoods(addGoods());
+		good.setSelectedType(
+			JSON.parse(localStorage.getItem("selected-category")) || ""
+		);
 	}, [good, cart]);
 
 	const addToCart = useCallback(
@@ -69,17 +72,19 @@ const GoodsList = () => {
 
 	return (
 		<div className={styles.goodsList}>
-			{good.goods.map((goodItem) => (
-				<GoodCard
-					key={goodItem.id}
-					title={goodItem.title}
-					price={goodItem.price}
-					img={goodItem.img}
-					category={goodItem.category}
-					market={goodItem.market}
-					addToCart={() => addToCart(goodItem)}
-				/>
-			))}
+			{good.goods
+				.filter((item) => item.category === good.selectedType)
+				.map((goodItem) => (
+					<GoodCard
+						key={goodItem.id}
+						title={goodItem.title}
+						price={goodItem.price}
+						img={goodItem.img}
+						category={goodItem.category}
+						market={goodItem.market}
+						addToCart={() => addToCart(goodItem)}
+					/>
+				))}
 		</div>
 	);
 };
