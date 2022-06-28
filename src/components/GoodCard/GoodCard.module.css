@@ -1,0 +1,75 @@
+.card {
+    position: relative;
+    width: 354px;
+    height: 483px;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    margin-right: 25px;
+    margin-left: 25px;
+    border-radius: 14px;
+}
+
+.card img {
+    width: 327px;
+    height: 327px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 10px;
+}
+
+.card p {
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.card .pricing {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    margin: 5px;
+    bottom: 5px;
+}
+
+.pricing p {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.pricing button {
+    font-size: 15px;
+    width: 125px;
+    background-color: blue;
+    color: white;
+    border: 1px solid black;
+    outline: none;
+    border-radius: 3px;
+    padding: 3px;
+    font-weight: 700;
+    transition: 150ms;
+}
+
+.pricing button:hover {
+    cursor: pointer;
+    background-color: white;
+    color: blue;
+}
+
+.category {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 5px;
+}
+
+.category p {
+    font-size: 12px;
+}

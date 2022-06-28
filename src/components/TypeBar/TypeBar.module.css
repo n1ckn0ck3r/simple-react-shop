@@ -1,0 +1,48 @@
+.typebar {
+	position: relative;
+	width: 75%;
+	margin-left: auto;
+	margin-right: auto;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	align-items: stretch;
+	justify-items: center;
+}
+
+.typebar .notActive,
+.typebar .active {
+	font-size: 16px;
+	font-weight: bold;
+	width: 150px;
+	height: 50px;
+	padding: 4px;
+	margin: 5px;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-self: center;
+	justify-self: center;
+	background-color: aqua;
+	color: white;
+	transition: 150ms;
+	border: 1px solid black;
+	border-radius: 2px;
+}
+
+.typebar .notActive:hover,
+.typebar .active:hover {
+	background-color: white;
+	color: black;
+	cursor: pointer;
+}
+
+.typebar .active {
+	background-color: red;
+	color: bisque;
+}
+
+.typebar .active:hover {
+	background-color: aqua;
+	color: white;
+}

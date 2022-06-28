@@ -1,0 +1,118 @@
+.cart {
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    font-size: 19px;
+    font-weight: 800;
+    font-family: "Inter", sans-serif;
+    text-align: center;
+}
+
+.cart #not-empty {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.cart #empty { 
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.cart table {
+    margin: 5px;
+    /* padding: 2px 4px; */
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    border: 1px solid black;
+}
+
+thead {
+    background-color: #fbad53;
+}
+
+tbody {
+    font-size: 0.85em;
+}
+
+tr {
+    position: relative;
+}
+
+tr:nth-child(odd) {
+    background-color: transparent;
+}
+
+tr:nth-child(even) {
+    background-color: #f6e9b5c6;
+}
+
+.title {
+    width: 40%;
+    text-align: center;
+}
+
+.price {
+    width: 25%;
+    text-align: center;
+}
+
+.amount {
+    width: 35%;
+    text-align: center;
+}
+
+.amount .amounting {
+    margin-right: auto;
+    margin-left: auto;
+    width: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-flow: row wrap;
+}
+
+.amounting button {
+    width: 5rem;
+    height: 20px;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+    border: 1px solid black;
+    border-radius: 3px;
+    outline: none;
+    background-color: transparent;
+    transition: 150ms;
+    color: #000;
+}
+
+.amounting .buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-flow: row wrap;
+}
+
+.amounting button:hover {
+    cursor: pointer;
+}
+
+.amounting button:nth-child(1):hover {
+    color: #fff;
+    background-color: #12cb05;
+}
+
+.amounting button:nth-child(2):hover {
+    color: #fff;
+    background-color: #eae608;
+}
+
+.amounting button:nth-child(3):hover {
+    color: #fff;
+    background-color: #fc0420;
+}
+
