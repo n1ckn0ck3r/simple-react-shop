@@ -68,7 +68,7 @@ const CartTable = () => {
 						style={{
 							cursor: "pointer",
 							textDecoration: "none",
-							color: "black",
+							color: "blue",
 						}}>
 						Купите что-нибудь
 					</Link>
