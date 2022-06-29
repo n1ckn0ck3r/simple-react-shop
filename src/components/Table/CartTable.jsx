@@ -8,24 +8,21 @@ import styles from "./CartTable.module.css";
 
 const CartTable = () => {
 	const { cart } = useContext(Context);
-	const checkEmptiness = (goods) => (goods.length !== 0 ? false : true);
 	const [isEmpty, setIsEmpty] = useState(true);
-	const totalCost = checkEmptiness(cart.cart)
+	const checkEmptiness = (goods) => (goods.length === 0 ? true : false);
+
+	useEffect(() => {
+		cart.setCart(JSON.parse(localStorage.getItem("cart")) || []);
+
+		setIsEmpty(checkEmptiness(cart.cart));
+	}, [cart]);
+
+	const totalCost = !isEmpty
 		? cart.cart.reduce(
 				(total, current) => (total += current.price * current.amount),
 				0
 		  )
 		: 0;
-
-	useEffect(() => {
-		cart.setCart(JSON.parse(localStorage.getItem("cart")) || []);
-
-		if (checkEmptiness(cart.cart)) {
-			setIsEmpty(false);
-		} else {
-			setIsEmpty(true);
-		}
-	}, [cart]);
 
 	const increaseGoods = (goods, goodID) => {
 		const index = goods.findIndex((el) => el.id === goodID);
