@@ -1,12 +1,14 @@
 .typebar {
 	position: relative;
 	width: 75%;
+	top: 60px;
 	margin-left: auto;
 	margin-right: auto;
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	align-items: stretch;
-	justify-items: center;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-flow: row wrap;
+	padding: 5px;
 }
 
 .typebar .notActive,
@@ -45,4 +47,21 @@
 .typebar .active:hover {
 	background-color: aqua;
 	color: white;
+}
+
+.categories {
+	height: 50px;
+	width: 50%;
+	display: flex;
+	align-items: center;
+	font-size: 22px;
+	padding: 2px 4px;
+}
+
+.categories p {
+	justify-self: flex-start;
+}
+
+.categories:hover {
+	cursor: pointer;
 }

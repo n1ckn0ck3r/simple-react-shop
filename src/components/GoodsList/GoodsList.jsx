@@ -11,8 +11,8 @@ const GoodsList = () => {
 	useEffect(() => {
 		cart.setCart(JSON.parse(localStorage.getItem("cart")) || []);
 		good.setGoods(addGoods());
-		good.setSelectedType(
-			JSON.parse(localStorage.getItem("selected-category")) || ""
+		good.setSelectedTypes(
+			JSON.parse(localStorage.getItem("selected-categories")) || []
 		);
 	}, [good, cart]);
 
@@ -73,7 +73,7 @@ const GoodsList = () => {
 	return (
 		<div className={styles.goodsList}>
 			{good.goods
-				.filter((item) => item.category === good.selectedType)
+				.filter((item) => good.selectedTypes.includes(item.category))
 				.map((goodItem) => (
 					<GoodCard
 						key={goodItem.id}

@@ -1,12 +1,9 @@
-import { action, makeAutoObservable, observable } from "mobx";
+import { makeAutoObservable } from "mobx";
 
 export default class CartStore {
 	constructor() {
 		this._cart = [];
-		makeAutoObservable(this, {
-			_cart: observable,
-			setCart: action,
-		});
+		makeAutoObservable(this);
 	}
 
 	setCart(cart) {

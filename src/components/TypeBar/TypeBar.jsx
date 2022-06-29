@@ -1,11 +1,13 @@
-import React, { useCallback, useContext, useEffect } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { Context } from "../..";
 import { observer } from "mobx-react-lite";
 import data from "../../data.json";
 import styles from "./TypeBar.module.css";
+import CategoryList from "../CategoryList/CategoryList";
 
 const TypeBar = () => {
 	const { good } = useContext(Context);
+	const [isVisible, setIsVisible] = useState(false);
 
 	const filtering = useCallback(() => {
 		const temp = [];
@@ -17,32 +19,21 @@ const TypeBar = () => {
 	}, []);
 
 	useEffect(() => {
-		good.setSelectedType(
-			JSON.parse(localStorage.getItem("selected-category")) || ""
+		good.setSelectedTypes(
+			JSON.parse(localStorage.getItem("selected-categories")) || []
 		);
 		good.setTypes(filtering());
 	}, [good, filtering]);
 
-	const getType = (type) => {
-		good.setSelectedType(type);
-		localStorage.setItem(
-			"selected-category",
-			JSON.stringify(good.selectedType)
-		);
-	};
-
 	return (
 		<div className={styles.typebar}>
-			{good.types.map((type) => (
-				<button
-					key={type}
-					onClick={() => getType(type)}
-					className={
-						good.selectedType === type ? styles.active : styles.notActive
-					}>
-					{type}
-				</button>
-			))}
+			<div
+				className={styles.categories}
+				onMouseEnter={() => setIsVisible(true)}
+				onMouseLeave={() => setIsVisible(false)}>
+				<p>Фильтровать по категории</p>
+				{isVisible && <CategoryList categoryList={good.types} />}
+			</div>
 		</div>
 	);
 };

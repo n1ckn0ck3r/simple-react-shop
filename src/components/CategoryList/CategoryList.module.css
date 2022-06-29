@@ -1,0 +1,35 @@
+* {
+	transform: 0.5s ease-in;
+}
+
+.categoryList {
+	position: relative;
+	top: 0;
+	right: 0;
+	width: auto;
+	height: auto;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	font-size: 16px;
+	color: white;
+	background-color: grey;
+	padding: 5px;
+	z-index: 1;
+	border: 1px solid black;
+	border-radius: 4px;
+	transform: translate(10%, 40%);
+}
+
+.category {
+	display: flex;
+	align-items: center;
+	width: 90%;
+	margin: auto;
+	justify-content: flex-end;
+	flex-direction: row-reverse;
+	padding: 5px;
+	gap: 5px;
+}

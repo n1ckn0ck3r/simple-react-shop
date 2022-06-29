@@ -1,6 +1,7 @@
 .goodsList {
 	position: relative;
 	width: 90%;
+	top: 30px;
 	margin-left: auto;
 	margin-right: auto;
 	padding: 25px;
