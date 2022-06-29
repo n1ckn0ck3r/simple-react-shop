@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./GoodCard.module.css";
 
 const GoodCard = ({ title, price, img, category, market, addToCart }) => {

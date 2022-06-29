@@ -1,6 +1,6 @@
 import { action } from "mobx";
 import { observer } from "mobx-react-lite";
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../..";
 import { MAIN_ROUTE } from "../../utils/consts";

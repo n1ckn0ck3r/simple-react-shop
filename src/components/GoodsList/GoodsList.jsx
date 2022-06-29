@@ -1,9 +1,10 @@
-import React, { useCallback, useContext, useEffect } from "react";
+import { lazy, useCallback, useContext, useEffect } from "react";
 import { observer } from "mobx-react-lite";
 import { Context } from "../..";
-import GoodCard from "../GoodCard/GoodCard";
 import data from "../../data.json";
 import styles from "./GoodsList.module.css";
+
+const GoodCard = lazy(() => import("../GoodCard/GoodCard"));
 
 const GoodsList = () => {
 	const { good, cart } = useContext(Context);

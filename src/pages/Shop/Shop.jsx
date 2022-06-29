@@ -1,7 +1,6 @@
-import React from "react";
-import GoodsList from "../../components/GoodsList/GoodsList";
-import TypeBar from "../../components/TypeBar/TypeBar";
 import styles from "./Shop.module.css";
+import TypeBar from "../../components/TypeBar/TypeBar";
+import GoodsList from "../../components/GoodsList/GoodsList";
 
 const Shop = () => {
 	return (

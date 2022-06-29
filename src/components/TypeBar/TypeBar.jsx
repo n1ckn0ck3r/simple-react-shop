@@ -1,10 +1,11 @@
-import React, { useCallback, useContext, useEffect, useState } from "react";
+import { lazy, useCallback, useContext, useEffect, useState } from "react";
 import { Context } from "../..";
 import { observer } from "mobx-react-lite";
 import data from "../../data.json";
 import styles from "./TypeBar.module.css";
-import CategoryList from "../CategoryList/CategoryList";
-import MarketList from "../MarketList/MarketList";
+
+const CategoryList = lazy(() => import("../CategoryList/CategoryList"));
+const MarketList = lazy(() => import("../MarketList/MarketList"));
 
 const TypeBar = () => {
 	const { good } = useContext(Context);

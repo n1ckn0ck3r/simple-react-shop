@@ -1,6 +1,5 @@
-import React from "react";
-import CartTable from "../../components/Table/CartTable";
 import styles from "./Cart.module.css";
+import CartTable from "../../components/Table/CartTable";
 
 const Cart = () => {
 	return (

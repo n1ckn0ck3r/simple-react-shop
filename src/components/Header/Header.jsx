@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { CART_ROUTE, MAIN_ROUTE } from "../../utils/consts";
 import cartLogo from "../../assets/cart.png";
