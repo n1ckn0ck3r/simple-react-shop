@@ -12,7 +12,10 @@ const GoodsList = () => {
 		cart.setCart(JSON.parse(localStorage.getItem("cart")) || []);
 		good.setGoods(addGoods());
 		good.setSelectedTypes(
-			JSON.parse(localStorage.getItem("selected-categories")) || []
+			JSON.parse(localStorage.getItem("selected-categories")) || good.types
+		);
+		good.setSelectedMarkets(
+			JSON.parse(localStorage.getItem("selected-markets")) || good.markets
 		);
 	}, [good, cart]);
 
@@ -73,7 +76,11 @@ const GoodsList = () => {
 	return (
 		<div className={styles.goodsList}>
 			{good.goods
-				.filter((item) => good.selectedTypes.includes(item.category))
+				.filter(
+					(item) =>
+						good.selectedTypes.includes(item.category) &&
+						good.selectedMarkets.includes(item.market)
+				)
 				.map((goodItem) => (
 					<GoodCard
 						key={goodItem.id}

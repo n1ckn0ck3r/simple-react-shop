@@ -8,7 +8,7 @@ const CategoryList = ({ categoryList }) => {
 
 	useEffect(() => {
 		good.setSelectedTypes(
-			JSON.parse(localStorage.getItem("selected-categories")) || []
+			JSON.parse(localStorage.getItem("selected-categories")) || good.types
 		);
 	}, [good]);
 

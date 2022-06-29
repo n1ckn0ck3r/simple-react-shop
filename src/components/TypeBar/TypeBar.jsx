@@ -4,12 +4,14 @@ import { observer } from "mobx-react-lite";
 import data from "../../data.json";
 import styles from "./TypeBar.module.css";
 import CategoryList from "../CategoryList/CategoryList";
+import MarketList from "../MarketList/MarketList";
 
 const TypeBar = () => {
 	const { good } = useContext(Context);
-	const [isVisible, setIsVisible] = useState(false);
+	const [categoriesVisible, setCategoriesVisible] = useState(false);
+	const [marketsVisible, setMarketsVisible] = useState(false);
 
-	const filtering = useCallback(() => {
+	const addCategories = useCallback(() => {
 		const temp = [];
 		data.menu
 			.map((item) => item.category)
@@ -18,21 +20,41 @@ const TypeBar = () => {
 		return temp;
 	}, []);
 
+	const addMarkets = useCallback(() => {
+		const temp = [];
+		data.menu
+			.map((item) => item.market)
+			.forEach((item) => !temp.includes(item) && temp.push(item));
+
+		return temp;
+	}, []);
+
 	useEffect(() => {
 		good.setSelectedTypes(
-			JSON.parse(localStorage.getItem("selected-categories")) || []
+			JSON.parse(localStorage.getItem("selected-categories")) || good.types
 		);
-		good.setTypes(filtering());
-	}, [good, filtering]);
+		good.setSelectedMarkets(
+			JSON.parse(localStorage.getItem("selected-markets")) || good.markets
+		);
+		good.setTypes(addCategories());
+		good.setMarkets(addMarkets());
+	}, [good, addCategories, addMarkets]);
 
 	return (
 		<div className={styles.typebar}>
 			<div
 				className={styles.categories}
-				onMouseEnter={() => setIsVisible(true)}
-				onMouseLeave={() => setIsVisible(false)}>
+				onMouseEnter={() => setCategoriesVisible(true)}
+				onMouseLeave={() => setCategoriesVisible(false)}>
 				<p>Фильтровать по категории</p>
-				{isVisible && <CategoryList categoryList={good.types} />}
+				{categoriesVisible && <CategoryList categoryList={good.types} />}
+			</div>
+			<div
+				className={styles.markets}
+				onMouseEnter={() => setMarketsVisible(true)}
+				onMouseLeave={() => setMarketsVisible(false)}>
+				<p>Фильтровать по магазину</p>
+				{marketsVisible && <MarketList marketList={good.markets} />}
 			</div>
 		</div>
 	);
