@@ -8,7 +8,7 @@ import styles from "./CartTable.module.css";
 
 const CartTable = () => {
 	const { cart } = useContext(Context);
-	const checkEmptiness = (goods) => (goods.length !== 0 ? true : false);
+	const checkEmptiness = (goods) => (goods.length !== 0 ? false : true);
 	const [isEmpty, setIsEmpty] = useState(true);
 	const totalCost = checkEmptiness(cart.cart)
 		? cart.cart.reduce(
