@@ -1,6 +1,6 @@
 .table {
 	position: relative;
-	transition: 250ms;
+	transition: 150ms;
 }
 
 .table #notEmpty {
@@ -69,6 +69,8 @@ tr:nth-child(even) {
 .amounting button {
 	width: 5rem;
 	height: 20px;
+	margin: 0 5px;
+	padding: 2px;
 	font-size: 18px;
 	display: flex;
 	justify-content: center;
