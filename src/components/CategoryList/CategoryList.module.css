@@ -23,6 +23,18 @@
 	transform: translate(10%, 40%);
 }
 
+@media screen and (max-width: 300px) {
+	.categoryList {
+		transform: scale(0.75) translate(-80%, 30%);
+	}
+}
+
+@media screen and (max-width: 1115px) {
+	.categoryList {
+		transform: scale(0.9) translate(0, 35%);
+	}
+}
+
 .category {
 	display: flex;
 	align-items: center;

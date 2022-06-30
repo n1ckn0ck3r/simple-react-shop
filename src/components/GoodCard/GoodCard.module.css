@@ -1,3 +1,8 @@
+.parent {
+	display: flex;
+	justify-content: center;
+}
+
 .card {
 	position: relative;
 	width: 354px;
@@ -5,18 +10,29 @@
 	border: 1px solid black;
 	display: flex;
 	flex-direction: column;
-	margin: 10px;
-	margin-right: 25px;
-	margin-left: 25px;
+	margin: 5px;
 	border-radius: 14px;
+	transition: 50ms;
+}
+
+@media screen and (max-width: 380px) {
+	.card {
+		margin: 0 auto;
+		transform: scale(0.75);
+		height: calc(483px * 0.75);
+		width: calc(354px * 0.75);
+	}
+
+	.card img {
+		max-width: calc(327px * 0.75);
+		max-height: calc(327px * 0.75);
+	}
 }
 
 .card img {
 	width: 327px;
 	height: 327px;
-	margin-right: auto;
-	margin-left: auto;
-	margin-top: 10px;
+	margin: 10px auto 0 auto;
 	user-select: none;
 }
 
@@ -34,13 +50,13 @@
 	justify-content: space-around;
 	align-items: center;
 	position: relative;
-	width: 100%;
-	margin: 5px;
+	width: 95%;
+	margin: 5px auto;
 	bottom: 5px;
 }
 
 .pricing p {
-	font-size: 15px;
+	font-size: 16px;
 	font-weight: 500;
 }
 

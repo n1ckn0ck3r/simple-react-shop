@@ -4,8 +4,8 @@ import { observer } from "mobx-react-lite";
 import data from "../../data.json";
 import styles from "./TypeBar.module.css";
 
-const CategoryList = lazy(() => import("../CategoryList/CategoryList"));
-const MarketList = lazy(() => import("../MarketList/MarketList"));
+const CategoryList = lazy(() => import("../CategoryList"));
+const MarketList = lazy(() => import("../MarketList"));
 
 const TypeBar = () => {
 	const { good } = useContext(Context);

@@ -14,6 +14,8 @@ export const Context = createContext({ good, cart });
 
 root.render(
 	<Context.Provider value={{ good, cart }}>
-		<App />
+		<React.StrictMode>
+			<App />
+		</React.StrictMode>
 	</Context.Provider>
 );

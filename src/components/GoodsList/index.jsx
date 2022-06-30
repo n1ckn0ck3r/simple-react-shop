@@ -4,7 +4,7 @@ import { Context } from "../..";
 import data from "../../data.json";
 import styles from "./GoodsList.module.css";
 
-const GoodCard = lazy(() => import("../GoodCard/GoodCard"));
+const GoodCard = lazy(() => import("../GoodCard"));
 
 const GoodsList = () => {
 	const { good, cart } = useContext(Context);

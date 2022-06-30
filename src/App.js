@@ -3,7 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 import "./App.css";
 import AppRouter from "./components/AppRouter";
 
-const Header = lazy(() => import("./components/Header/Header"));
+const Header = lazy(() => import("./components/Header"));
 
 function App() {
 	return (

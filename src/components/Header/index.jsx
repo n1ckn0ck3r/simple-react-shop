@@ -6,10 +6,10 @@ import styles from "./Header.module.css";
 const Header = () => {
 	return (
 		<div className={styles.header}>
-			<Link to={MAIN_ROUTE} style={{ color: "#fff", textDecoration: "none" }}>
+			<Link to={MAIN_ROUTE} className={styles.link}>
 				Магазинчик
 			</Link>
-			<Link to={CART_ROUTE} style={{ textDecoration: "none" }}>
+			<Link to={CART_ROUTE} className={styles.link}>
 				<img src={cartLogo} width={32} height={32} alt="Корзина" />
 			</Link>
 		</div>

@@ -1,6 +1,6 @@
 .table {
 	position: relative;
-	top: 56px;
+	transition: 250ms;
 }
 
 .table #notEmpty {
@@ -11,20 +11,18 @@
 .table #empty {
 	font-size: 25px;
 	font-weight: bold;
-	margin-top: auto;
-	margin-bottom: auto;
+	margin: auto 0;
 }
 
 .table table {
-	margin: 5px;
 	width: 90%;
-	margin-right: auto;
-	margin-left: auto;
+	margin: 5px auto;
 	border: 1px solid black;
 }
 
 thead {
 	background-color: #fbad53;
+	font-weight: bold;
 }
 
 tbody {
@@ -61,11 +59,11 @@ tr:nth-child(even) {
 .amount .amounting {
 	margin-right: auto;
 	margin-left: auto;
-	width: 85%;
+	width: 90%;
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
-	flex-flow: row wrap;
+	flex-direction: column;
 }
 
 .amounting button {
@@ -75,7 +73,6 @@ tr:nth-child(even) {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-right: 15px;
 	border: 1px solid black;
 	border-radius: 3px;
 	outline: none;
@@ -85,10 +82,11 @@ tr:nth-child(even) {
 }
 
 .amounting .buttons {
+	margin: 0 auto;
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
-	flex-flow: row wrap;
+	flex-direction: row;
 }
 
 .amounting button:hover {
@@ -108,4 +106,43 @@ tr:nth-child(even) {
 .amounting button:nth-child(3):hover {
 	color: #fff;
 	background-color: #fc0420;
+}
+
+@media screen and (max-width: 1140px) {
+	.amounting {
+		flex-direction: column;
+	}
+
+	.amounting button {
+		width: 4rem;
+	}
+}
+
+@media screen and (max-width: 1040px) {
+	.amounting .buttons {
+		flex-direction: column;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.table #empty,
+	.table #notEmpty {
+		font-size: 20px;
+	}
+
+	thead {
+		font-size: 0.75em;
+	}
+
+	tbody {
+		font-size: 0.7em;
+	}
+
+	.amounting button {
+		font-size: 14px;
+	}
+
+	.totalCost {
+		font-size: 18px;
+	}
 }
