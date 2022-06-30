@@ -142,6 +142,7 @@ tr:nth-child(even) {
 
 	.amounting button {
 		font-size: 14px;
+		margin: 2px auto;
 	}
 
 	.totalCost {
