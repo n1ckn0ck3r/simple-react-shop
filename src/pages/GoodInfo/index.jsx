@@ -81,9 +81,6 @@ const GoodInfo = () => {
 
 	const increaseGoods = () => {
 		good.selectedGood.amount++;
-		good.selectedGood.price =
-			good.prices.find((item) => item.id === good.selectedGood.id).price *
-			good.selectedGood.amount;
 		good.setSelectedGood(good.selectedGood);
 		localStorage.setItem("selected-item", JSON.stringify(good.selectedGood));
 	};
@@ -91,9 +88,6 @@ const GoodInfo = () => {
 	const decreaseGoods = () => {
 		if (good.selectedGood.amount > 1) {
 			good.selectedGood.amount--;
-			good.selectedGood.price =
-				good.prices.find((item) => item.id === good.selectedGood.id).price *
-				good.selectedGood.amount;
 			good.setSelectedGood(good.selectedGood);
 			localStorage.setItem("selected-item", JSON.stringify(good.selectedGood));
 		} else {
@@ -114,7 +108,15 @@ const GoodInfo = () => {
 						<div className={styles.leftSide}>
 							<img src={good.selectedGood.image} alt="Изображение" />
 							<div className={styles.price}>
-								<p>Цена: {good.selectedGood.price} руб.</p>
+								<p>
+									Цена:{" "}
+									{Number(
+										good.selectedGood.price * good.selectedGood.amount
+									).toLocaleString("ru-RU", {
+										style: "currency",
+										currency: "RUB",
+									})}
+								</p>
 							</div>
 						</div>
 						<div className={styles.rightSide}>

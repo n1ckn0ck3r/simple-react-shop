@@ -97,7 +97,12 @@ const CartTable = () => {
 									onClick={() => selectGood(item.id)}>
 									{item.title}
 								</td>
-								<td className={styles.price}>{item.price} руб.</td>
+								<td className={styles.price}>
+									{Number(item.price).toLocaleString("ru-RU", {
+										style: "currency",
+										currency: "RUB",
+									})}
+								</td>
 								<td className={styles.amount}>
 									<div className={styles.amounting}>
 										<p>{item.amount}</p>
@@ -128,7 +133,13 @@ const CartTable = () => {
 			)}
 			{!isEmpty && (
 				<div className={styles.totalCost}>
-					<p>Общая стоимость товаров: {totalCost} руб.</p>
+					<p>
+						Общая стоимость товаров:{" "}
+						{Number(totalCost).toLocaleString("ru-RU", {
+							style: "currency",
+							currency: "RUB",
+						})}
+					</p>
 				</div>
 			)}
 		</div>

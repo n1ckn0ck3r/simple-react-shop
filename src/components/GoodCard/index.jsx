@@ -9,7 +9,10 @@ const GoodCard = ({ title, price, img, category, market, addToCart }) => {
 				<div className={styles.pricing}>
 					<p>
 						Цена: <br />
-						{price} рублей
+						{Number(price).toLocaleString("ru-RU", {
+							style: "currency",
+							currency: "RUB",
+						})}
 					</p>
 					<button onClick={addToCart}>Ознакомиться</button>
 				</div>
