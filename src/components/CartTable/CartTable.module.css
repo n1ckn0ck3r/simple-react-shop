@@ -46,6 +46,13 @@ tr:nth-child(even) {
 	text-align: center;
 }
 
+.itemTitle {
+	width: 40%;
+	text-align: center;
+	color: blue;
+	cursor: pointer;
+}
+
 .price {
 	width: 25%;
 	text-align: center;

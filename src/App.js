@@ -1,9 +1,7 @@
-import { lazy } from "react";
 import { BrowserRouter } from "react-router-dom";
 import "./App.css";
 import AppRouter from "./components/AppRouter";
-
-const Header = lazy(() => import("./components/Header"));
+import Header from "./components/Header";
 
 function App() {
 	return (

@@ -1,77 +1,27 @@
-import { lazy, useCallback, useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { observer } from "mobx-react-lite";
+import { useNavigate } from "react-router-dom";
 import { Context } from "../..";
-import data from "../../data.json";
 import styles from "./GoodsList.module.css";
-
-const GoodCard = lazy(() => import("../GoodCard"));
+import GoodCard from "../GoodCard";
 
 const GoodsList = () => {
-	const { good, cart } = useContext(Context);
+	const { good } = useContext(Context);
+	const navigate = useNavigate();
 
 	useEffect(() => {
-		cart.setCart(JSON.parse(localStorage.getItem("cart")) || []);
-		good.setGoods(addGoods());
-		good.setSelectedTypes(
-			JSON.parse(localStorage.getItem("selected-categories")) || good.types
+		good.setSelectedCategories(
+			JSON.parse(localStorage.getItem("selected-categories")) || good.categories
 		);
 		good.setSelectedMarkets(
 			JSON.parse(localStorage.getItem("selected-markets")) || good.markets
 		);
-	}, [good, cart]);
+	}, [good]);
 
-	const addToCart = useCallback(
-		(good) => {
-			const [goods, isSimilar] = checkSimilarity(cart.cart, good);
-
-			if (isSimilar) {
-				cart.setCart(goods);
-			} else {
-				cart.setCart([
-					...cart.cart,
-					{
-						id: good.id,
-						title: good.title,
-						price: good.price,
-						category: good.category,
-						market: good.market,
-						amount: 1,
-					},
-				]);
-			}
-
-			localStorage.setItem("cart", JSON.stringify(cart.cart));
-		},
-		[cart]
-	);
-
-	const addGoods = () => {
-		let temp = [];
-		data.menu.forEach((el, index) => {
-			temp.push({
-				id: index,
-				title: el.name,
-				price: el.price,
-				img: require(`../../assets${el.image}`),
-				category: el.category,
-				market: el.market,
-			});
-		});
-
-		return temp;
-	};
-
-	const checkSimilarity = (goods, good) => {
-		let isSimilar = false;
-
-		const item = goods.find((el) => el.id === good.id);
-
-		if (item) {
-			item.amount += 1;
-			isSimilar = true;
-		}
-
-		return [goods, isSimilar];
+	const selectGood = (item) => {
+		good.setSelectedGood(item);
+		localStorage.setItem("selected-good", JSON.stringify(good.selectedGood));
+		navigate(`/good/${item.id}`);
 	};
 
 	return (
@@ -79,7 +29,7 @@ const GoodsList = () => {
 			{good.goods
 				.filter(
 					(item) =>
-						good.selectedTypes.includes(item.category) &&
+						good.selectedCategories.includes(item.category) &&
 						good.selectedMarkets.includes(item.market)
 				)
 				.map((goodItem) => (
@@ -87,10 +37,10 @@ const GoodsList = () => {
 						key={goodItem.id}
 						title={goodItem.title}
 						price={goodItem.price}
-						img={goodItem.img}
+						img={goodItem.image}
 						category={goodItem.category}
 						market={goodItem.market}
-						addToCart={() => addToCart(goodItem)}
+						addToCart={() => selectGood(goodItem)}
 					/>
 				))}
 		</div>

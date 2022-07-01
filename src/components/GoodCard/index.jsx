@@ -11,7 +11,7 @@ const GoodCard = ({ title, price, img, category, market, addToCart }) => {
 						Цена: <br />
 						{price} рублей
 					</p>
-					<button onClick={addToCart}>Купить</button>
+					<button onClick={addToCart}>Ознакомиться</button>
 				</div>
 				<div className={styles.category}>
 					<p>Категория: {category}</p>

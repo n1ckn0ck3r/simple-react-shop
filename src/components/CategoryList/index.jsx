@@ -7,38 +7,38 @@ const CategoryList = ({ categoryList }) => {
 	const { good } = useContext(Context);
 
 	useEffect(() => {
-		good.setSelectedTypes(
-			JSON.parse(localStorage.getItem("selected-categories")) || good.types
+		good.setSelectedCategories(
+			JSON.parse(localStorage.getItem("selected-categories")) || good.categories
 		);
 	}, [good]);
 
 	const toggleSelectedCategories = (event) => {
 		const category = event.target.previousSibling.textContent;
 
-		if (good.selectedTypes.includes(category)) {
-			good.setSelectedTypes(
-				good.selectedTypes.filter((item) => item !== category)
+		if (good.selectedCategories.includes(category)) {
+			good.setSelectedCategories(
+				good.selectedCategories.filter((item) => item !== category)
 			);
 		} else {
-			good.setSelectedTypes([...good.selectedTypes, category]);
+			good.setSelectedCategories([...good.selectedCategories, category]);
 		}
 
 		localStorage.setItem(
 			"selected-categories",
-			JSON.stringify(good.selectedTypes)
+			JSON.stringify(good.selectedCategories)
 		);
 	};
 
 	const toggleAllSelectedCategories = () => {
-		if (good.selectedTypes.length === good.types.length) {
-			good.setSelectedTypes([]);
+		if (good.selectedCategories.length === good.categories.length) {
+			good.setSelectedCategories([]);
 		} else {
-			good.setSelectedTypes(good.types);
+			good.setSelectedCategories(good.categories);
 		}
 
 		localStorage.setItem(
 			"selected-categories",
-			JSON.stringify(good.selectedTypes)
+			JSON.stringify(good.selectedCategories)
 		);
 	};
 
@@ -48,7 +48,7 @@ const CategoryList = ({ categoryList }) => {
 				<label>Все</label>
 				<input
 					type={"checkbox"}
-					checked={good.selectedTypes.length === good.types.length}
+					checked={good.selectedCategories.length === good.categories.length}
 					onChange={toggleAllSelectedCategories}
 				/>
 			</div>
@@ -57,7 +57,7 @@ const CategoryList = ({ categoryList }) => {
 					<label>{category}</label>
 					<input
 						type={"checkbox"}
-						checked={good.selectedTypes.includes(category)}
+						checked={good.selectedCategories.includes(category)}
 						onChange={(event) => toggleSelectedCategories(event)}
 					/>
 				</div>

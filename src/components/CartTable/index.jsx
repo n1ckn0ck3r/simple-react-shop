@@ -1,14 +1,15 @@
 import { action } from "mobx";
 import { observer } from "mobx-react-lite";
 import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../..";
 import { MAIN_ROUTE } from "../../utils/consts";
 import styles from "./CartTable.module.css";
 
 const CartTable = () => {
-	const { cart } = useContext(Context);
+	const { cart, good } = useContext(Context);
 	const [isEmpty, setIsEmpty] = useState(true);
+	const navigate = useNavigate();
 	const checkEmptiness = (goods) => (goods.length === 0 ? true : false);
 
 	useEffect(() => {
@@ -28,8 +29,6 @@ const CartTable = () => {
 		const index = goods.findIndex((el) => el.id === goodID);
 		goods[index].amount += 1;
 		cart.setCart(goods);
-
-		setIsEmpty(checkEmptiness(cart.cart));
 
 		localStorage.setItem("cart", JSON.stringify(goods));
 	};
@@ -56,6 +55,11 @@ const CartTable = () => {
 		setIsEmpty(checkEmptiness(cart.cart));
 
 		localStorage.setItem("cart", JSON.stringify(goods));
+	};
+
+	const selectGood = (id) => {
+		good.setSelectedGood(good.goods.find((item) => item.id === id));
+		navigate(`/good/${id}`);
 	};
 
 	return (
@@ -88,7 +92,11 @@ const CartTable = () => {
 					<tbody>
 						{cart.cart.map((item) => (
 							<tr key={item.id}>
-								<td className={styles.title}>{item.title}</td>
+								<td
+									className={styles.itemTitle}
+									onClick={() => selectGood(item.id)}>
+									{item.title}
+								</td>
 								<td className={styles.price}>{item.price} руб.</td>
 								<td className={styles.amount}>
 									<div className={styles.amounting}>
