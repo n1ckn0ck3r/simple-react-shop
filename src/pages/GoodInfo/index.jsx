@@ -12,7 +12,7 @@ const GoodInfo = () => {
 	const navigate = useNavigate();
 	const [isExists, setIsExists] = useState(false);
 
-	const checkExistenсe = useCallback(
+	const checkExistence = useCallback(
 		(id) => {
 			if (good.selectedGood.id === Number(id)) {
 				return true;
@@ -36,8 +36,8 @@ const GoodInfo = () => {
 
 	useEffect(() => {
 		cart.setCart(JSON.parse(localStorage.getItem("cart")) || []);
-		setIsExists(checkExistenсe(params.id));
-	}, [cart, params, checkExistenсe]);
+		setIsExists(checkExistence(params.id));
+	}, [cart, params, checkExistence]);
 
 	const addToCart = useCallback(
 		(item) => {
